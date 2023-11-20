@@ -1,0 +1,7 @@
+PATCH  http://localhost:3500/ad/1
+Content-Type: application/json
+
+{
+  "title": "Iphone",
+  "description": "Stockage 125 Go"
+}
