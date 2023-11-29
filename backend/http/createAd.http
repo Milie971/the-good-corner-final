@@ -78,7 +78,7 @@ Content-Type: application/json
 },
 { 
   "title": "maisonF4",
-  "description": "Maison de campagne F4",
+  "description": "Maison de campagne  F4",
   "owner": "Larry",
   "price": 400000,
   "picture": "https://www.ecosia.org/images?addon=safari&addonversion=4.2.1.51&q=Maison%20F4",

@@ -39,23 +39,11 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Hello sunshine!");
 });
 
-// app.get("/ad", (req: Request, res: Response) => {
-//   db.all("SELECT * FROM ad", (err, rows) => {
-//     if (!err) {
-//       res.send(rows);
-//     } else {
-//       console.error(err);
-//       res.sendStatus(500);
-//     }
-//   });
-// });
-
 app.get("/ad", (req: Request, res: Response) => {
   res.send(ads);
-  db.all("SELECT * FROM ad ", (err, rows) => {
-    if (!err) {
-      res.send(rows);
-    } else {
+  db.all("SELECT * FROM ad", (err, rows) => {
+    if (!err) res.send(rows);
+    else {
       console.log(err);
       res.sendStatus(500);
     }
