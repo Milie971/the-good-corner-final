@@ -2,6 +2,7 @@ import {
   Entity,
   BaseEntity,
   PrimaryGeneratedColumn,
+  Column,
   CreateDateColumn,
 } from "typeorm";
 
@@ -30,4 +31,26 @@ export class Ad extends BaseEntity {
 
   @CreateDateColumn()
   createdAt: string;
+
+  // Ajoutez un constructeur pour initialiser les propriétés
+  constructor(
+    id: number,
+    title: string,
+    description: string,
+    owner: string,
+    price: number,
+    picture: string,
+    location: string,
+    createdAt: string
+  ) {
+    super();
+    this.id = id;
+    this.title = title;
+    this.description = description;
+    this.owner = owner;
+    this.price = price;
+    this.picture = picture;
+    this.location = location;
+    this.createdAt = createdAt;
+  }
 }
