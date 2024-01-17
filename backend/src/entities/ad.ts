@@ -1,36 +1,36 @@
 import {
   Entity,
-  BaseEntity,
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  BaseEntity,
 } from "typeorm";
 
 @Entity()
 export class Ad extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
 
   @Column({ length: 100 })
-  title: string;
+  title: string
 
   @Column({ nullable: true, type: "text" })
-  description: string;
+  description: string
 
   @Column()
-  owner: string;
+  owner: string
 
   @Column({ type: "float" })
-  price: number;
+  price: number
 
   @Column()
-  picture: string;
+  picture: string
 
   @Column()
-  location: string;
+  location: string
 
   @CreateDateColumn()
-  createdAt: string;
+  createdAt: string
 
   // Ajoutez un constructeur pour initialiser les propriétés
   constructor(

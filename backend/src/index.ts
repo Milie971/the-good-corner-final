@@ -4,7 +4,7 @@ import express, { Request, Response } from "express";
 import { Ad } from "./type";
 //import sqlite from "sqlite3";
 import db from "./db";
-//import { DataSource } from "typeorm";
+import { DataSource } from "typeorm";
 
 //const db = new sqlite.Database("the_good_corner.sqlite");
 const app = express();
