@@ -5,7 +5,6 @@ import {
   CreateDateColumn,
   BaseEntity,
 } from "typeorm";
-
 @Entity()
 export class Ad extends BaseEntity {
   @PrimaryGeneratedColumn()
@@ -60,5 +59,10 @@ export class Ad extends BaseEntity {
     this.picture = picture;
     this.location = location;
     this.createdAt = createdAt;
+  }
+  static createAd(adData: Partial<Ad>): Ad {
+    const ad = new Ad();
+    Object.assign(ad, adData);
+    return ad;
   }
 }

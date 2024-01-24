@@ -1,15 +1,31 @@
 // console.log("hello Sunshine");
 import "reflect-metadata";
 import express, { Request, Response } from "express";
-import { Ad } from "./type";
+
 //import sqlite from "sqlite3";
 import db from "./db";
-import { DataSource } from "typeorm";
+
+import { Ad } from "./entities/ad";
+import { save } from "typeorm";
+//import { DataSource } from "typeorm";
 
 //const db = new sqlite.Database("the_good_corner.sqlite");
 const app = express();
 const port = 3500;
 
+const newAd = new Ad({
+  id: 1,
+  title: "Bike to sell",
+  description:
+    "My bike is blue, working fine. I'm selling it because I've got a new one",
+  owner: "bike.seller@gmail.com",
+  price: 100,
+  picture:
+    "https://images.lecho.be/view?iid=dc:113129565&context=ONLINE&ratio=16/9&width=640&u=1508242455000",
+  location: "Paris",
+  createdAt: "2023-09-05T10:13:14.755Z",
+});
+/*
 let ads: Ad[] = [
   {
     id: 1,
@@ -35,14 +51,14 @@ let ads: Ad[] = [
     location: "Paris",
     createdAt: "2023-10-05T10:14:15.922Z",
   },
-];
+];*/
 app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello sunshine!");
 });
 
-app.get("/ad", (req: Request, res: Response) => {
+app.get("/ad", async (req: Request, res: Response) => {
   /*
   res.send(ads);
   db.all("SELECT * FROM ad", (err, rows) => {
@@ -53,17 +69,38 @@ app.get("/ad", (req: Request, res: Response) => {
     }
   });
   */
+  try {
+    const ads = await Ad.find();
+    res.send(ads);
+    // res.send(await Ad.find());
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
 });
 
-app.post("/ad", (req: Request, res: Response) => {
-  /*
-  const id = ads.length + 1;
+app.post("/ad", async (req: Request, res: Response) => {
+  // const id = ads.length + 1;
 
-  const newAd = { ...req.body, id, createdAt: new Date().toISOString() };
+  /*const newAd = { ...req.body, id, createdAt: new Date().toISOString() };
   console.log(newAd);
   ads.push(req.body);
   res.send("Request received, check the backend terminal");
+};
 */
+  /*const newAd: Ad = {
+    ...req.body,
+    createdAt: new Date().toISOString(),
+  };*/
+  try {
+    const newAdInstance = Ad.create(req.body);
+    await newAdInstance.save();
+    res.send(newAdInstance);
+    // res.send(await Ad.find());
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
   /*
   db.run(
     "INSERT INTO ad (title, description, owner, price, picture, location, createdAt, category_id) VALUES($title, $description, $owner, $price, $picture, $location, $createdAt, $category_id)",

@@ -1,3 +1,4 @@
+import { save } from "typeorm";
 export type Ad = {
   id: number;
   title: string;
