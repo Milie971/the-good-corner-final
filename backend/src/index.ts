@@ -56,13 +56,14 @@ app.get("/ad", (req: Request, res: Response) => {
 });
 
 app.post("/ad", (req: Request, res: Response) => {
+  /*
   const id = ads.length + 1;
 
   const newAd = { ...req.body, id, createdAt: new Date().toISOString() };
   console.log(newAd);
   ads.push(req.body);
   res.send("Request received, check the backend terminal");
-
+*/
   /*
   db.run(
     "INSERT INTO ad (title, description, owner, price, picture, location, createdAt, category_id) VALUES($title, $description, $owner, $price, $picture, $location, $createdAt, $category_id)",

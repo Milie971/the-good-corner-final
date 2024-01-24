@@ -9,40 +9,48 @@ import {
 @Entity()
 export class Ad extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @Column({ length: 100 })
-  title: string
+  title: string;
 
   @Column({ nullable: true, type: "text" })
-  description: string
+  description: string;
 
   @Column()
-  owner: string
+  owner: string;
 
   @Column({ type: "float" })
-  price: number
+  price: number;
 
   @Column()
-  picture: string
+  picture: string;
 
   @Column()
-  location: string
+  location: string;
 
   @CreateDateColumn()
-  createdAt: string
+  createdAt: string;
 
-  // Ajoutez un constructeur pour initialiser les propriétés
-  constructor(
-    id: number,
-    title: string,
-    description: string,
-    owner: string,
-    price: number,
-    picture: string,
-    location: string,
-    createdAt: string
-  ) {
+  constructor({
+    id,
+    title,
+    description,
+    owner,
+    price,
+    picture,
+    location,
+    createdAt,
+  }: {
+    id: number;
+    title: string;
+    description: string;
+    owner: string;
+    price: number;
+    picture: string;
+    location: string;
+    createdAt: string;
+  }) {
     super();
     this.id = id;
     this.title = title;
