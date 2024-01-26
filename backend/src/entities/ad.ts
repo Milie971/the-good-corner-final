@@ -5,12 +5,14 @@ import {
   CreateDateColumn,
   BaseEntity,
 } from "typeorm";
+import { Length, Min } from "class-validator";
 @Entity()
 export class Ad extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ length: 100 })
+  @Length(5, 50, { message: "Le titre doit contenir entre 5 et 50 caractères" })
   title: string;
 
   @Column({ nullable: true, type: "text" })
@@ -20,6 +22,7 @@ export class Ad extends BaseEntity {
   owner: string;
 
   @Column({ type: "float" })
+  @Min(0, { message: "Le prix doit être positif" })
   price: number;
 
   @Column()
@@ -60,9 +63,9 @@ export class Ad extends BaseEntity {
     this.location = location;
     this.createdAt = createdAt;
   }
-  static createAd(adData: Partial<Ad>): Ad {
-    const ad = new Ad();
-    Object.assign(ad, adData);
-    return ad;
-  }
+  // static createAd(adData: Partial<Ad>): Ad {
+  //   const ad = new Ad();
+  //   Object.assign(ad, adData);
+  //   return ad;
+  // }
 }

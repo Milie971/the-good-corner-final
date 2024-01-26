@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "ts-node-dev --watch ./src src/index.ts"
+    "start": "ts-node-dev --watch ./src src/index.ts",
+    "resetDB": "ts-node-dev --watch ./src src/resetDb.ts"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/Milie971/the-good-corner-final#readme",
   "dependencies": {
+    "class-validator": "^0.14.1",
     "express": "^4.18.2",
     "reflect-metadata": "^0.2.1",
     "sqlite3": "^5.1.6",

@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { Ad } from "./entities/ad";
+//import { Ad } from "./entities/ad";
 
 export default new DataSource({
   type: "sqlite",
