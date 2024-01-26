@@ -4,8 +4,10 @@ import {
   Column,
   CreateDateColumn,
   BaseEntity,
+  ManyToOne,
 } from "typeorm";
 import { Length, Min } from "class-validator";
+import { Category } from "./entities/category";
 @Entity()
 export class Ad extends BaseEntity {
   @PrimaryGeneratedColumn()
@@ -33,4 +35,10 @@ export class Ad extends BaseEntity {
 
   @CreateDateColumn()
   createdAt: string;
+
+  @ManyToOne(() => Category, (c) => c.ads, {
+    cascade: true,
+    onDelete: "CASCADE",
+  })
+  category: Category;
 }

@@ -2,11 +2,10 @@
 import "reflect-metadata";
 import { validate } from "class-validator";
 import express, { Request, Response } from "express";
-
 //import sqlite from "sqlite3";
 import db from "./db";
-
 import { Ad } from "./entities/ad";
+import { Category } from "./entities/category";
 
 //import { DataSource } from "typeorm";
 
@@ -20,9 +19,27 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Hello sunshine!");
 });
 
+app.get("/categories", async (req: Request, res: Response) => {
+  try {
+    const categories = await Category.find({
+      relations: {
+        ads: true,
+      },
+    });
+    res.send(categories);
+    // res.send(await Ad.find());
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
 app.get("/ad", async (req: Request, res: Response) => {
   try {
-    const ads = await Ad.find();
+    const ads = await Ad.find({
+      relations: {
+        category: true,
+      },
+    });
     res.send(ads);
     // res.send(await Ad.find());
   } catch (err) {
