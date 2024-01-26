@@ -33,39 +33,4 @@ export class Ad extends BaseEntity {
 
   @CreateDateColumn()
   createdAt: string;
-
-  constructor({
-    id,
-    title,
-    description,
-    owner,
-    price,
-    picture,
-    location,
-    createdAt,
-  }: {
-    id: number;
-    title: string;
-    description: string;
-    owner: string;
-    price: number;
-    picture: string;
-    location: string;
-    createdAt: string;
-  }) {
-    super();
-    this.id = id;
-    this.title = title;
-    this.description = description;
-    this.owner = owner;
-    this.price = price;
-    this.picture = picture;
-    this.location = location;
-    this.createdAt = createdAt;
-  }
-  // static createAd(adData: Partial<Ad>): Ad {
-  //   const ad = new Ad();
-  //   Object.assign(ad, adData);
-  //   return ad;
-  // }
 }
