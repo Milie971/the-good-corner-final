@@ -5,9 +5,13 @@ import {
   CreateDateColumn,
   BaseEntity,
   ManyToOne,
+  ManyToMany,
+  JoinTable,
 } from "typeorm";
+
 import { Length, Min } from "class-validator";
 import { Category } from "./entities/category";
+import { Tag } from "./tag";
 @Entity()
 export class Ad extends BaseEntity {
   @PrimaryGeneratedColumn()
@@ -41,4 +45,10 @@ export class Ad extends BaseEntity {
     onDelete: "CASCADE",
   })
   category: Category;
+
+  @JoinTable()
+  @ManyToMany(() => Tag, (t = t.ads), {
+    cascade: true,
+  })
+  tags: Tag[];
 }

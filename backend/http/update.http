@@ -3,5 +3,8 @@ Content-Type: application/json
 
 {
   "title": "Iphone",
-  "description": "Stockage 125 Go"
+  "description": "Stockage 125 Go",
+  "price": 700,
+  "tags":[{"id":2}, {"id": 3}],
+  "category": 1
 }
