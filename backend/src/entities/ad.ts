@@ -10,7 +10,7 @@ import {
 } from "typeorm";
 
 import { Length, Min } from "class-validator";
-import { Category } from "./entities/category";
+import { Category } from "./category";
 import { Tag } from "./tag";
 @Entity()
 export class Ad extends BaseEntity {
@@ -47,7 +47,7 @@ export class Ad extends BaseEntity {
   category: Category;
 
   @JoinTable()
-  @ManyToMany(() => Tag, (t = t.ads), {
+  @ManyToMany(() => Tag, (t) => t.ads, {
     cascade: true,
   })
   tags: Tag[];
