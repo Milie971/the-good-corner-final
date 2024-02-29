@@ -1,8 +1,8 @@
-import { Router, Response } from "express";
+import { Router, Request, Response } from "express";
 import { Category } from "../entities/category";
 
 const router = Router();
-router.get("/categories", async (_, res: Response) => {
+router.get("/list", async (_, res: Response) => {
   try {
     const categories = await Category.find({
       relations: {
@@ -17,6 +17,8 @@ router.get("/categories", async (_, res: Response) => {
   }
 });
 
+router.get("/find/:id", async (_, res: Response) => {});
+
 export default router;
 
 /**
@@ -24,5 +26,3 @@ export default router;
  Liste de routes 
  ================================================
  */
-
-router.get("/find/:id", async (_, res: Response) => {});
