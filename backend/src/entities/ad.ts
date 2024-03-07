@@ -7,6 +7,7 @@ import {
   ManyToOne,
   ManyToMany,
   JoinTable,
+  UpdateDateColumn,
 } from "typeorm";
 
 import { Length, Min } from "class-validator";
@@ -39,6 +40,9 @@ export class Ad extends BaseEntity {
 
   @CreateDateColumn()
   createdAt: string;
+
+  @UpdateDateColumn()
+  updateAt: string;
 
   @ManyToOne(() => Category, (c) => c.ads, {
     cascade: true,

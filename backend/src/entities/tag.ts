@@ -12,7 +12,7 @@ import { Ad } from "./ad";
 import { Length } from "class-validator";
 
 @Entity()
-export class Tag extends BaseEntity {
+export class Tag {
   @PrimaryGeneratedColumn()
   id: number;
 

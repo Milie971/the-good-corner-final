@@ -6,6 +6,7 @@ import db from "./db";
 import categoryRouter from "./routes/categories";
 import tagRouter from "./routes/tags";
 import adRouter from "./routes/ads";
+//import cors from cors;
 
 const app = express();
 const port = 3500;

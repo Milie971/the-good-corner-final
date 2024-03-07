@@ -9,7 +9,7 @@ import {
 } from "typeorm";
 import { Ad } from "./ad";
 @Entity()
-export class Category extends BaseEntity {
+export class Category {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -18,10 +18,4 @@ export class Category extends BaseEntity {
 
   @OneToMany(() => Ad, (ad) => ad.category)
   ads: Ad[];
-
-  @CreateDateColumn()
-  createAt: string;
-
-  @ManyToOne(() => Category, (c) => c.ads)
-  category: Category;
 }
